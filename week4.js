@@ -1,31 +1,31 @@
 
 // Normal function
-// function isJose(user) {
-//     return user.username === "jose"
-// }
+function isJose(user) {
+    return user.username === "jose"
+}
 
-// // Arrow function
-// const isJose = (user) => {
-//     return user.username === "jose"
-// }
+// Arrow function
+const isJose = (user) => {
+    return user.username === "jose"
+}
 
-// // Get rid of the parenthesis
-// const isJose = user => {
-//     return user.username === "jose"
-// }
+// Get rid of the parenthesis
+const isJose = user => {
+    return user.username === "jose"
+}
 
-// // Get rid of the body of the function {}
-// const isJose = user => user.username === "jose"
+// Get rid of the body of the function {}
+const isJose = user => user.username === "jose"
 
-// function isNotEmpty(paper) {
-//     return paper !== '';
-// }
+function isNotEmpty(paper) {
+    return paper !== '';
+}
 
-// (paper) => {
-//     return paper !== ''
-// }
+(paper) => {
+    return paper !== ''
+}
 
-// (paper) => paper !== ''
+(paper) => paper !== ''
 
 // (p) => p !== ''
 
@@ -36,29 +36,23 @@
 
 //ingredient => ingredient + " in microwave" // "butter"
 
-
 // Function that takes a callback function as a parameter
-// const cookIngredients = (cookingFunction) => { // cookingFunction = ingredient => ingredient + " in microwave"
-//     const ingredients = ["flour", "butter", "milk", "cheese"]
-//     let result = "";
-//     // result += cookingFunction("flour") + " "
-//     // result += cookingFunction("butter") + " "
-//     // result += cookingFunction("milk") + " "
-//     // result += cookingFunction("cheese")
-//     for(let i = 0; i < ingredients.length; i++) {
-//         result += cookingFunction( ingredients[i] ) + " "
-//     }
-//     // STUFF TO DO HERE
-//     alert(result)
-// }
+const cookIngredients = (cookingFunction) => { // cookingFunction = ingredient => ingredient + " in microwave"
+    const ingredients = ["flour", "butter", "milk", "cheese"]
+    let result = "";
+    // result += cookingFunction("flour") + " "
+    // result += cookingFunction("butter") + " "
+    // result += cookingFunction("milk") + " "
+    // result += cookingFunction("cheese")
+    for(let i = 0; i < ingredients.length; i++) {
+        result += cookingFunction( ingredients[i] ) + " "
+    }
+    // STUFF TO DO HERE
+    alert(result)
+}
 
-// // Callling it with a callback function
-// cookIngredients(ingredient => ingredient + " in microwave") // callback function is: ingredient => ingredient + " in microwave"
-
-
-
-
-
+// Callling it with a callback function
+cookIngredients(ingredient => ingredient + " in microwave") // callback function is: ingredient => ingredient + " in microwave"
 
 
 
@@ -101,9 +95,6 @@ const unreadEmailsStringList = emailList
     .join("\n")
 
 alert( `UNREAD EMAILS\n${unreadEmailsStringList}` )
-
-
-
 
 
 
