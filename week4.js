@@ -1,58 +1,71 @@
 
-// Normal function
-function isJose(user) {
-    return user.username === "jose"
-}
 
-// Arrow function
-const isJose = (user) => {
-    return user.username === "jose"
-}
+// for(let i = 0; i < fdsfds; i++) {
+//     const message = "This is looping " + i
+//     alert(message)
+// }
 
-// Get rid of the parenthesis
-const isJose = user => {
-    return user.username === "jose"
-}
 
-// Get rid of the body of the function {}
-const isJose = user => user.username === "jose"
 
-function isNotEmpty(paper) {
-    return paper !== '';
-}
+// function add(a, b) {
+//     return a + b
+// }
 
-(paper) => {
-    return paper !== ''
-}
+// const add = (a, b) => {
+//     return a + b
+// }
 
-(paper) => paper !== ''
+//const add = (a, b) => a + b
 
-// (p) => p !== ''
+//const double = (a) => a + a
+const double = a => a + a
+
+
+
+
+// function isNotEmpty(paper) {
+//     return paper !== '';
+// }
+
+// const isNotEmpty = (paper) => {
+//     return paper !== '';
+// }
+
+// const isNotEmpty = (paper) => paper !== ''
+
+// const isNotEmpty = paper => paper !== ''
+
+// const isNotEmpty = p => p !== ''
 
 // p => p !== ''
 
 
 
 
-//ingredient => ingredient + " in microwave" // "butter"
+// const doesNameStartWithM = name => name[0] === "M"
 
-// Function that takes a callback function as a parameter
-const cookIngredients = (cookingFunction) => { // cookingFunction = ingredient => ingredient + " in microwave"
-    const ingredients = ["flour", "butter", "milk", "cheese"]
-    let result = "";
-    // result += cookingFunction("flour") + " "
-    // result += cookingFunction("butter") + " "
-    // result += cookingFunction("milk") + " "
-    // result += cookingFunction("cheese")
-    for(let i = 0; i < ingredients.length; i++) {
-        result += cookingFunction( ingredients[i] ) + " "
+// doesNameStartWithM("Maria")
+
+
+
+// function map(array, callback) {
+//     const mappedArray = []
+//     for(let i = 0; i < array.length; i++) {
+//         mappedArray.push(callback(array[i]))
+//     }
+//     return mappedArray
+// }
+
+
+function filter(array, callback) { //callback = email => !email.read
+    const filteredArray = []
+    for(let i = 0; i < array.length; i++) {
+        if(callback(array[i])) {
+            filteredArray.push(array[i])
+        }
     }
-    // STUFF TO DO HERE
-    alert(result)
+    return filteredArray
 }
-
-// Callling it with a callback function
-cookIngredients(ingredient => ingredient + " in microwave") // callback function is: ingredient => ingredient + " in microwave"
 
 
 
@@ -81,36 +94,47 @@ let emailList = [
     }
 ]
 
+//emailList[0].read
 
-// MAP - map each object in an array to how we want that object displayed
-const arrayOfStrings = emailList.map(email => email.author + ": " + email.message) 
-
-alert(arrayOfStrings.join("\n"));
+//displayStrings = ["Heyyyy", "What's up?", "Good day"]
 
 
-// FILTER
-const unreadEmailsStringList = emailList
-    .filter(email => !email.read)
-    .map(email => email.author + ": " + email.message )
-    .join("\n")
+// MAP - map data (objects) to how we're going to display it (string)
+//const displayStrings = emailList.map( email => email.author + ": " + email.message )
+alert(emailList.map( email => `${email.author}: ${email.message}` ).join("\n"))
 
-alert( `UNREAD EMAILS\n${unreadEmailsStringList}` )
+emailList.push({ 
+    id: 2000,
+    author: "Dylan",
+    to: "Calvin",
+    message: "Good day",
+    read: false, 
+})
 
+alert(emailList.map( email => `${email.author}: ${email.message}` ).join("\n"))
 
+// FILTER - filter for unread emails
 
-
-const names = ["something", "whatever"]
-const namesLength = []
-
-for(let i = 0; i < names.length; i++) {
-    const name = names[i]
-    namesLength.push( name.length )
+// Very expanded version:
+function isEmailUnread(email) {
+    return !email.read
 }
-
-for(const name of names) {
-    namesLength.push( name.length )
+function turnEmailObjectToString(email) {
+    return `${email.author}: ${email.message}`
 }
+const filteredEmailsArrayOfOBjects = emailList.filter( isEmailUnread )
+console.log("filteredEmailsArrayOfOBjects", filteredEmailsArrayOfOBjects)
+const filteredEmailsArrayOfStrings = filteredEmailsArrayOfOBjects.map( turnEmailObjectToString )
+console.log("filteredEmailsArrayOfStrings", filteredEmailsArrayOfStrings)
+const stringOfAllFilteredEmails = filteredEmailsArrayOfStrings.join("\n")
+console.log("stringOfAllFilteredEmails", stringOfAllFilteredEmails)
+alert("UNREAD\n" + stringOfAllFilteredEmails)
 
-names.forEach(name => namesLength.push(name.length))
+// Streamlined version:
+alert("UNREAD\n" + emailList.filter(email => !email.read).map(email => `${email.author}: ${email.message}`).join("\n"))
 
-console.log(namesLength)
+
+// FIND- find one particular item by its
+const emailToShow = emailList.find( e => e.id === 1654 )
+const emailAuthorToShow = emailList.find( e => e.id === 1654 ).author
+alert("EMAIL TO SHOW\n" + `${emailToShow.author}: ${emailToShow.message}`)
