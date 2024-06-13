@@ -1,75 +1,98 @@
+const myName = "Natalie";
 
-// const myName = prompt("What's your name?")
+function getWorkDone() {
+  const papers = ["some", "", "papers", ""];
+  const full = filter(papers, (paper) => paper !== "");
+}
 
-
-
-// // const isNotEmpty = (paper) => {
-// //     return paper !== ''
-// // }
-
-// const isNotEmpty = paper => paper !== ''
-
-
-
-// const names = ["Abigail", "Marco", "Simone", "Maria"]
-
-// const mNames = names.filter( name => name[0] === "S" )
-
-// console.log(mNames) // [ "Simone" ]
-
-
-// const firstMName = names.find(name => name[0] === "X")
-
-// console.log(firstMName) // undefined
- 
-
-
-
-
-
-
-// Data
-let emailList = [
-    {
-        id: 234,
-        author: "Natalie",
-        to: "Calvin",
-        message: "Heyyyy",
-        read: false,
-    },
-    {
-        id: 1654,
-        author: "Natalie",
-        to: "Calvin",
-        message: "What's up?",
-        read: true,
-    },
-    {
-        id: 474,
-        author: "Dylan",
-        to: "Calvin",
-        message: "Good day",
-        read: false,
+const isNotEmpty = function filter(array, callbackFunc) {
+  // let array = ["some", "", "papers", ""] // let callbackFunc = (paper) => paper !== ""
+  const filteredArray = [];
+  for (const item of array) {
+    if (callbackFunc(item)) {
+      filteredArray.push(item);
     }
-]
+  }
+  return filteredArray;
+};
 
-// Display the data
-// Really common use of the map array method
-// Map the data to how we want it displayed
-alert(emailList.map( email => email.author + ": " + email.message ))
-// [ "Natalie: Heyyy", "Natalie: What's up?", "Dylan: Good day" ]
-
-// Filter - filter the array
-const unreadEmails = emailList.filter( email => email.read === false ) // !email.read
-// just to display it
-alert("UNREAD EMAILS\n\n" + unreadEmails.map( email => email.author + ": " + email.message ))
-
-// Find - find an email by its id
-const selectedEmail = emailList.find( email => email.id === 1654 )
-
-alert("SELECTED EMAIL\n\n" + selectedEmail.message)
+const lunchTime = (foodChoice, drinkChoice) => `We are having ${foodChoice} and ${drinkChoice} for lunch.`;
+const dinnerTime = (foodChoice, drinkChoice) => `We are having ${foodChoice} and ${drinkChoice} for dinner.`;
 
 
-// Replace writing a for loop yourself
-// Faster, easier, more readable
+const foodForToday = (foodChoice, drinkChoice, callbackFunction) => {
+  // let callbackFunction =  (foodChoice, drinkChoice) => We are having ${foodChoice} and ${drinkChoice} for dinner.
+  return callbackFunction(foodChoice, drinkChoice);
+}
 
+// We're passing lunchTime in as a callback function
+console.log(foodForToday("pizza", "soda", lunchTime));
+
+// Now we're passing dinnerTime in as a callback function
+console.log(foodForToday("spaghetti", "wine", dinnerTime));
+
+
+
+
+
+
+// Real world example 1
+
+const addUSTax = (amount) => amount * 1.08
+
+const addEUTax = (amount) => amount * 1.20
+
+function getTotal(total, addTax) {
+    const totalWithTax = addTax(total)
+    console.log("The total is " + totalWithTax)
+}
+
+// Spain McDonalds
+getTotal(3.48, addEUTax)
+
+// Phoenix McDonalds
+getTotal(3.48, addUSTax)
+
+
+
+
+// Real world example 2
+
+const formatUSMoney = (amount) => "$" + amount
+
+const formatEUMoney = (amount) => "E" + amount
+
+function tellCustomerTheirTotal(total, formatMoney) {
+    alert( "You total is " + formatMoney(total) + " Please come back to McDonalds" )
+}
+
+
+// Spain McDonalds
+tellCustomerTheirTotal(3.45, formatEUMoney)
+tellCustomerTheirTotal(4, formatEUMoney)
+
+// Phoenix McDonalds
+tellCustomerTheirTotal(2.48, formatUSMoney)
+tellCustomerTheirTotal(30.43, formatUSMoney)
+
+
+
+
+// Without a Callback function
+// This example does NOT have a callback function
+
+function tellCustomerTheirTotalinUS(total) {
+    alert( "You total is " + "$" + total + " Please come back to McDonalds" )
+}
+
+function tellCustomerTheirTotalinEU(total) {
+    alert( "You total is " + "E" + total + " Please come back to McDonalds" )
+}
+
+// Spain McDonalds
+tellCustomerTheirTotalinEU(3.45)
+tellCustomerTheirTotalinEU(4)
+
+// Phoenix McDonalds
+tellCustomerTheirTotalinUS(2.48)
+tellCustomerTheirTotalinUS(30.43)
