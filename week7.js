@@ -1,98 +1,164 @@
-const myName = "Natalie";
 
-function getWorkDone() {
-  const papers = ["some", "", "papers", ""];
-  const full = filter(papers, (paper) => paper !== "");
-}
-
-const isNotEmpty = function filter(array, callbackFunc) {
-  // let array = ["some", "", "papers", ""] // let callbackFunc = (paper) => paper !== ""
-  const filteredArray = [];
-  for (const item of array) {
-    if (callbackFunc(item)) {
-      filteredArray.push(item);
-    }
+// make a function that takes an array and returns true if the sum is greater than 100
+function numbersGreaterThan(arr) {
+  let ret = false
+  let arraySum = 0
+  for(let i = 0; i < arr.length; i++) {
+    arraySum += arr[1]
   }
-  return filteredArray;
-};
-
-const lunchTime = (foodChoice, drinkChoice) => `We are having ${foodChoice} and ${drinkChoice} for lunch.`;
-const dinnerTime = (foodChoice, drinkChoice) => `We are having ${foodChoice} and ${drinkChoice} for dinner.`;
-
-
-const foodForToday = (foodChoice, drinkChoice, callbackFunction) => {
-  // let callbackFunction =  (foodChoice, drinkChoice) => We are having ${foodChoice} and ${drinkChoice} for dinner.
-  return callbackFunction(foodChoice, drinkChoice);
+  if(arraySum > 100) {
+    ret = true
+  }
+  console.log(ret)
 }
 
-// We're passing lunchTime in as a callback function
-console.log(foodForToday("pizza", "soda", lunchTime));
+numbersGreaterThan([5, 4, 3])
 
-// Now we're passing dinnerTime in as a callback function
-console.log(foodForToday("spaghetti", "wine", dinnerTime));
-
+const myFavoriteNumbers = [4, 3, 2]
+numbersGreaterThan(myFavoriteNumbers)
 
 
 
 
-
-// Real world example 1
-
-const addUSTax = (amount) => amount * 1.08
-
-const addEUTax = (amount) => amount * 1.20
-
-function getTotal(total, addTax) {
-    const totalWithTax = addTax(total)
-    console.log("The total is " + totalWithTax)
+function getFirstElement(myArray) {
+  return myArray[0]
 }
 
-// Spain McDonalds
-getTotal(3.48, addEUTax)
+getFirstElement(["fdsfds", "fdsfdsf", "fdsfds"])
 
-// Phoenix McDonalds
-getTotal(3.48, addUSTax)
+// NATALIE MAKE A SLIDE ABOUT THIS
 
 
 
+super()
+this
 
-// Real world example 2
+// Week 7 - callbacks, es7
+// Week 8 - Object Oriented Programming (OOP) (this, super, constructor) - functions calling other functions
+// Week 9 - OOP - functions calling other functions
+// OOP goes on the shelf (if you are a modern front-end programmer)
 
-const formatUSMoney = (amount) => "$" + amount
 
-const formatEUMoney = (amount) => "E" + amount
-
-function tellCustomerTheirTotal(total, formatMoney) {
-    alert( "You total is " + formatMoney(total) + " Please come back to McDonalds" )
+let user = {
+  name: "Natalie",
+  role: "teacher",
+  sayHi: () => {
+    alert("hello!")
+  }
 }
 
+// global variable = variable created outside of any function
+// 
 
-// Spain McDonalds
-tellCustomerTheirTotal(3.45, formatEUMoney)
-tellCustomerTheirTotal(4, formatEUMoney)
-
-// Phoenix McDonalds
-tellCustomerTheirTotal(2.48, formatUSMoney)
-tellCustomerTheirTotal(30.43, formatUSMoney)
+let myName = "Natalie"
 
 
 
 
-// Without a Callback function
-// This example does NOT have a callback function
 
-function tellCustomerTheirTotalinUS(total) {
-    alert( "You total is " + "$" + total + " Please come back to McDonalds" )
+function playRockPaperScissors() {
+  const computerPick = getComputerAnswer()
+  const humanAnswer = getHumanAnswer()
+  const winner = checkWhoWon(computerPick, humanAnswer)
+  alert(`${winner} won!`)
 }
 
-function tellCustomerTheirTotalinEU(total) {
-    alert( "You total is " + "E" + total + " Please come back to McDonalds" )
+// takes no parameters, no input
+// returns the user's pick
+function getHumanAnswer() {
+  return prompt("What's your pick?")
 }
 
-// Spain McDonalds
-tellCustomerTheirTotalinEU(3.45)
-tellCustomerTheirTotalinEU(4)
+// takes no parameters, no input
+// returns a random pick
+function getComputerAnswer() {
+  // random number generation to get a random response
+  return "paper"
+}
 
-// Phoenix McDonalds
-tellCustomerTheirTotalinUS(2.48)
-tellCustomerTheirTotalinUS(30.43)
+// takes two parameters - the computer's answer, the human's answer
+// return either "human" or "computer"
+function checkWhoWon(computerAnswer, humanAnswer) {
+  if(computerAnswer === "rock" && humanAnswer === "paper") {
+    return "human"
+  }
+  // more checks
+}
+
+const message = prompt("What's the message")
+
+//message = "something else" // ERROR
+
+
+
+
+// We could do this, but so much duplication!
+
+// function isNotEmpty(item) {
+//   return item !== ""
+// }
+
+// function filterOutEmpty(array) {
+//   const filteredArray = []
+//   for(let i = 0; i < array.length; i++) {
+//       const item = array[i]
+//       if(isNotEmpty(item)) {
+//           filteredArray.push(item)
+//       }
+//   }
+//   return filteredArray
+// }
+
+// function isNotNasty(item) {
+//   return item !== "cucumber" && item !== "kale"
+// }
+
+// function filterOutNasty(array) {
+//   const filteredArray = []
+//   for(let i = 0; i < array.length; i++) {
+//       const item = array[i]
+//       if(isNotNasty(item)) {
+//           filteredArray.push(item)
+//       }
+//   }
+//   return filteredArray
+// }
+
+// const fruits = ["cucumber", "strawberry", "", "mango", "kale", ""]
+// const goodFoods = filterOutNasty(fruits) // ["strawberry", "", "mango", ""]
+
+// const nonEmpty = filterOutEmpty(goodFoods) // ["strawberry", "mango"]
+
+// Instead we do this
+
+// Specific
+function isNotEmpty(item) {
+  return item !== ""
+}
+
+function isNotNasty(item) {
+  return item !== "cucumber" && item !== "kale"
+}
+
+// Generic
+// shouldKeep needs to be a function that returns true if should be in the filtered
+// and false if it should not be in the filtered array
+function filter(array, shouldKeep) {
+  const filteredArray = []
+  for(let i = 0; i < array.length; i++) {
+      const item = array[i]
+      if(shouldKeep(item)) {
+          filteredArray.push(item)
+      }
+  }
+  return filteredArray
+}
+
+const fruits = ["cucumber", "strawberry", "", "mango", "kale", ""]
+// passing isNotNasty into filter as a callback function
+const goodFoods = filter(fruits, isNotNasty) // ["strawberry", "", "mango", ""]
+
+// isNotEmpty = callback function (person that gets sent in the mail)
+// filter = function that accepts another function as a parameter (receives the person in the mail)
+const nonEmpty = filter(goodFoods, isNotEmpty) // ["strawberry", "mango"]
+
