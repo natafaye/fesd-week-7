@@ -1,149 +1,74 @@
 
-// make a function that takes an array and returns true if the sum is greater than 100
-function numbersGreaterThan(arr) {
-  let ret = false
-  let arraySum = 0
-  for(let i = 0; i < arr.length; i++) {
-    arraySum += arr[1]
-  }
-  if(arraySum > 100) {
-    ret = true
-  }
-  console.log(ret)
+
+function functionName(parameter1, parameter2) {
+  // code
+}
+const functionName = (parameter1, parameter2) => {
+  // code
 }
 
-numbersGreaterThan([5, 4, 3])
-
-const myFavoriteNumbers = [4, 3, 2]
-numbersGreaterThan(myFavoriteNumbers)
-
-
-
-
-function getFirstElement(myArray) {
-  return myArray[0]
-}
-
-getFirstElement(["fdsfds", "fdsfdsf", "fdsfds"])
-
-// NATALIE MAKE A SLIDE ABOUT THIS
-
-
-
-super()
-this
-
-// Week 7 - callbacks, es7
-// Week 8 - Object Oriented Programming (OOP) (this, super, constructor) - functions calling other functions
-// Week 9 - OOP - functions calling other functions
-// OOP goes on the shelf (if you are a modern front-end programmer)
-
-
-let user = {
-  name: "Natalie",
-  role: "teacher",
-  sayHi: () => {
-    alert("hello!")
-  }
-}
-
-// global variable = variable created outside of any function
-// 
-
-let myName = "Natalie"
-
-
-
-
-
-function playRockPaperScissors() {
-  const computerPick = getComputerAnswer()
-  const humanAnswer = getHumanAnswer()
-  const winner = checkWhoWon(computerPick, humanAnswer)
-  alert(`${winner} won!`)
-}
-
-// takes no parameters, no input
-// returns the user's pick
-function getHumanAnswer() {
-  return prompt("What's your pick?")
-}
-
-// takes no parameters, no input
-// returns a random pick
-function getComputerAnswer() {
-  // random number generation to get a random response
-  return "paper"
-}
-
-// takes two parameters - the computer's answer, the human's answer
-// return either "human" or "computer"
-function checkWhoWon(computerAnswer, humanAnswer) {
-  if(computerAnswer === "rock" && humanAnswer === "paper") {
-    return "human"
-  }
-  // more checks
-}
-
-const message = prompt("What's the message")
-
-//message = "something else" // ERROR
-
-
-
-
-// We could do this, but so much duplication!
-
-// function isNotEmpty(item) {
-//   return item !== ""
+// const addOne = (number) => {
+//   return number + 1
 // }
 
-// function filterOutEmpty(array) {
-//   const filteredArray = []
-//   for(let i = 0; i < array.length; i++) {
-//       const item = array[i]
-//       if(isNotEmpty(item)) {
-//           filteredArray.push(item)
-//       }
-//   }
-//   return filteredArray
-// }
+//const addOne = "fdsfds"
 
-// function isNotNasty(item) {
-//   return item !== "cucumber" && item !== "kale"
-// }
+// Data Types
+// number 5
+// boolean true
+// string "fdsfds"
+// object { id: 0 }
+// array [ 4, 3 ]    ["fdsfd", "fdsfds"]
+// null
+// undefined
+// function (parameter) => "result"
 
-// function filterOutNasty(array) {
-//   const filteredArray = []
-//   for(let i = 0; i < array.length; i++) {
-//       const item = array[i]
-//       if(isNotNasty(item)) {
-//           filteredArray.push(item)
-//       }
-//   }
-//   return filteredArray
-// }
+// Programming Tools
+// if/else
+// for
+// while
 
-// const fruits = ["cucumber", "strawberry", "", "mango", "kale", ""]
-// const goodFoods = filterOutNasty(fruits) // ["strawberry", "", "mango", ""]
 
-// const nonEmpty = filterOutEmpty(goodFoods) // ["strawberry", "mango"]
-
-// Instead we do this
-
-// Specific
-function isNotEmpty(item) {
-  return item !== ""
+// putting a normal function in a variable
+const addOne2 = function(number) {
+  return number + 1
 }
 
-function isNotNasty(item) {
-  return item !== "cucumber" && item !== "kale"
+// putting an arrow function in a variable
+const addOne3 = (number) => {
+  return number + 1
 }
 
-// Generic
-// shouldKeep needs to be a function that returns true if should be in the filtered
-// and false if it should not be in the filtered array
-function filter(array, shouldKeep) {
+const addOne4 = (number) =>
+  number + 1
+
+
+
+
+const specialKitchenChopper = () => {
+  fdsfds
+  fdsfdsf
+  fdsfdsffds
+  // DIFFERENT SPECIALIZED BLADES
+  fdsfdsf
+  fdsfds
+  fdsfds
+}
+
+// Real World Example
+const setUpAButton = () => {
+  // give it this class
+  // set it up nice like this
+  // SPECIALIZED: here's what to do when it's clicked on
+  // it should have this border
+}
+
+
+// Ascend filter to a higher plane -> Make this a higher order function
+function filter(array, shouldKeep) { // shouldKeep should be a function that returns true if you should keep and false if not
+  // function does this in the background
+  // let array = ["apple", "", "banana"]
+  // let shouldKeep = (fruit) => fruit !== ""
   const filteredArray = []
   for(let i = 0; i < array.length; i++) {
       const item = array[i]
@@ -154,11 +79,16 @@ function filter(array, shouldKeep) {
   return filteredArray
 }
 
-const fruits = ["cucumber", "strawberry", "", "mango", "kale", ""]
-// passing isNotNasty into filter as a callback function
-const goodFoods = filter(fruits, isNotNasty) // ["strawberry", "", "mango", ""]
+const fruits = ["apple", "", "banana", "avocado"]
+const fullStrings = filter(fruits, (fruit) => fruit !== "")
 
-// isNotEmpty = callback function (person that gets sent in the mail)
-// filter = function that accepts another function as a parameter (receives the person in the mail)
-const nonEmpty = filter(goodFoods, isNotEmpty) // ["strawberry", "mango"]
+// check if a string starts with a letter string[0] === "b" string.startsWith("b")
+// second parameter needs to be a callback function where it returns true if it starts with A and false if it doesn't
+const aNameFruits = filter(fruits, (fruit) => fruit[0] === 'a' ) // ["apple", "avocado"]
 
+
+// If it's a value that will never change, that is "constant" it makes sense to use const for that
+const PI = 3.14
+
+// constant = ALWAYS has the same value (pi is never different)
+// const variable = will have the same value for this usage
