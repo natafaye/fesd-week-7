@@ -1,94 +1,96 @@
+// number, string, boolean, null, undefined
+// these go IN the variable
+
+// object, array
+// these are just POINTED TO by the variable
+
+// function
 
 
-function functionName(parameter1, parameter2) {
-  // code
-}
-const functionName = (parameter1, parameter2) => {
-  // code
-}
+const addFive = (number) => number + 5
 
-// const addOne = (number) => {
-//   return number + 1
+// function addFive(number) {
+//   return number + 5
 // }
 
-//const addOne = "fdsfds"
+addFive(3)
 
-// Data Types
-// number 5
-// boolean true
-// string "fdsfds"
-// object { id: 0 }
-// array [ 4, 3 ]    ["fdsfd", "fdsfds"]
-// null
-// undefined
-// function (parameter) => "result"
-
-// Programming Tools
-// if/else
-// for
-// while
+// computer simplifies from left to right with accessing inside objects and arrays
+// users[2].username
+// the big old array[2].username
+// the derek object.username
+// "derek555"
 
 
-// putting a normal function in a variable
-const addOne2 = function(number) {
-  return number + 1
+
+function specialFunction(a, b) { // let a = (topic) => alert("smart things about" + topic); let b = true
+  console.log(a, b)
+  //a("javascript")
 }
 
-// putting an arrow function in a variable
-const addOne3 = (number) => {
-  return number + 1
+specialFunction(["🧀", "🥑", "🍦"], "Natalie")
+specialFunction(32, { lat: 241, long: 54 })
+specialFunction((topic) => alert("smart things about" + topic), true)
+
+
+function alertStuff() {
+  alert("smart things")
 }
 
-const addOne4 = (number) =>
-  number + 1
+alertStuff()
+
+
+
+//(topic) => alert("smart things about" + topic)
 
 
 
 
-const specialKitchenChopper = () => {
-  fdsfds
-  fdsfdsf
-  fdsfdsffds
-  // DIFFERENT SPECIALIZED BLADES
-  fdsfdsf
-  fdsfds
-  fdsfds
-}
 
-// Real World Example
-const setUpAButton = () => {
-  // give it this class
-  // set it up nice like this
-  // SPECIALIZED: here's what to do when it's clicked on
-  // it should have this border
-}
+const books = [
+  {
+      id: 0,
+      title: "Jane Eyre",
+      genre: "Classic"
+  },
+  {
+      id: 1,
+      title: "Ancillary Justice",
+      genre: "Science Fiction"
+  },
+  {
+      id: 2,
+      title: "Atomic Habits",
+      genre: "Nonfiction"
+  },
+  {
+      id: 3,
+      title: "Dune",
+      genre: "Science Fiction"
+  },
+]
 
-
-// Ascend filter to a higher plane -> Make this a higher order function
-function filter(array, shouldKeep) { // shouldKeep should be a function that returns true if you should keep and false if not
-  // function does this in the background
-  // let array = ["apple", "", "banana"]
-  // let shouldKeep = (fruit) => fruit !== ""
-  const filteredArray = []
-  for(let i = 0; i < array.length; i++) {
-      const item = array[i]
-      if(shouldKeep(item)) {
-          filteredArray.push(item)
-      }
-  }
-  return filteredArray
-}
-
-const fruits = ["apple", "", "banana", "avocado"]
-const fullStrings = filter(fruits, (fruit) => fruit !== "")
-
-// check if a string starts with a letter string[0] === "b" string.startsWith("b")
-// second parameter needs to be a callback function where it returns true if it starts with A and false if it doesn't
-const aNameFruits = filter(fruits, (fruit) => fruit[0] === 'a' ) // ["apple", "avocado"]
+/*** This is the top of the pyramid, professional-level code using almost every concept we've learned so far ***/
+// There's a for loop inside the filter function (we can't see it but I can guarantee it's in there)
+// There's an if inside the filter function (we can't see it but I can guarantee it's in there)
+// There's boolean logic checking if the genre is science fiction
+// There's two functions, the filter function and the callback function that checks the genre
+// There's an array of objects that we're filtering
+// We're accessing a property on an object, the genre property on the book object
+// We're passing parameters - we're passing the callback function to filter and we're passing the book to the callback function
+// We're calling the filter function (and the filter function will call the callback function)
+const scifiBooks = books.filter(   (book) => book.genre === "Science Fiction"   )
+console.log(scifiBooks)
 
 
-// If it's a value that will never change, that is "constant" it makes sense to use const for that
-const PI = 3.14
 
-// constant = ALWAYS has the same value (pi is never different)
-// const variable = will have the same value for this usage
+// function checkIfSciFi(book) {
+//   return book.genre === "Science Fiction"
+// }
+
+// const checkIfSciFi = (book) => book.genre === "Science Fiction"
+
+
+// checkIfSciFi(books[0])
+// checkIfSciFi(books[1])
+// checkIfSciFi(books[2])
