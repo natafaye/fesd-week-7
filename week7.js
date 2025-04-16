@@ -1,51 +1,18 @@
-// number, string, boolean, null, undefined
-// these go IN the variable
+const myFriends = ["Michele", "Timothy", "Ray"]
 
-// object, array
-// these are just POINTED TO by the variable
-
-// function
+// someString.includes("what you're looking for")
+const friendsWithINames = myFriends.filter(name => name.includes('i'))
+console.log(friendsWithINames)
 
 
-const addFive = (number) => number + 5
+// ["Hello Michele!", "Hello Timothy!", "Hello Ray!"]
+// bonus points if you use template literal
 
-// function addFive(number) {
-//   return number + 5
-// }
+const friendGreetings = myFriends.map(name => `Hello ${name}!`)
+//alert(friendGreetings.join("\n"))
 
-addFive(3)
-
-// computer simplifies from left to right with accessing inside objects and arrays
-// users[2].username
-// the big old array[2].username
-// the derek object.username
-// "derek555"
-
-
-
-function specialFunction(a, b) { // let a = (topic) => alert("smart things about" + topic); let b = true
-  console.log(a, b)
-  //a("javascript")
-}
-
-specialFunction(["🧀", "🥑", "🍦"], "Natalie")
-specialFunction(32, { lat: 241, long: 54 })
-specialFunction((topic) => alert("smart things about" + topic), true)
-
-
-function alertStuff() {
-  alert("smart things")
-}
-
-alertStuff()
-
-
-
-//(topic) => alert("smart things about" + topic)
-
-
-
-
+// Job Skill of this week:
+// map filter and find with arrays of objects (using arrow function for the callback functions)
 
 const books = [
   {
@@ -70,27 +37,22 @@ const books = [
   },
 ]
 
-/*** This is the top of the pyramid, professional-level code using almost every concept we've learned so far ***/
-// There's a for loop inside the filter function (we can't see it but I can guarantee it's in there)
-// There's an if inside the filter function (we can't see it but I can guarantee it's in there)
-// There's boolean logic checking if the genre is science fiction
-// There's two functions, the filter function and the callback function that checks the genre
-// There's an array of objects that we're filtering
-// We're accessing a property on an object, the genre property on the book object
-// We're passing parameters - we're passing the callback function to filter and we're passing the book to the callback function
-// We're calling the filter function (and the filter function will call the callback function)
-const scifiBooks = books.filter(   (book) => book.genre === "Science Fiction"   )
-console.log(scifiBooks)
+// Map - map each book in this style: "Jane Eyre (Classic)"
+// Filter - filter for all Science Fiction books (Ancillary Justice, Dune)
+// Find - find the book with the id of 2 (Atomic Habits)
 
+// Map - most frequently used to map an array of objects to how those objects should be displayed
+alert(
+  books.map( book => `${book.title} (${book.genre})` ) // book.title + " (" + book.genre + ")"
+)
 
+// Filter - most frequently used to filter (search, filters, in weird situations delete)
+const scienceFiction = books.filter(book => book.genre === "Science Fiction")
+alert(
+  "Science Fiction Books:\n" +
+  scienceFiction.map( book => `${book.title} (${book.genre})` )
+)
 
-// function checkIfSciFi(book) {
-//   return book.genre === "Science Fiction"
-// }
-
-// const checkIfSciFi = (book) => book.genre === "Science Fiction"
-
-
-// checkIfSciFi(books[0])
-// checkIfSciFi(books[1])
-// checkIfSciFi(books[2])
+// Find - most frequently used to get something by its id
+const book2 = books.find(book => book.id === 2)
+console.log(book2)
