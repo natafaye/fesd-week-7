@@ -1,58 +1,87 @@
-const myFriends = ["Michele", "Timothy", "Ray"]
+// console: '🎫'
 
-// someString.includes("what you're looking for")
-const friendsWithINames = myFriends.filter(name => name.includes('i'))
-console.log(friendsWithINames)
+function getTicket(money) { // let money = 10
+  if (money >= 10) {
+    return '🎫'
+  }
+}
+
+function enterTheater(movieTicket) { // let movieTicket = '🎫'
+  if (movieTicket === '🎫') {
+    alert('Enjoy your movie!')
+  } else {
+    alert('You need a ticket to see the movie.')
+  }
+}
+
+let ticket = '🎫'
+enterTheater('🎫')
+
+// strings, numbers, booleans are small, and just go straight in the variable
+// If your friend asks you for a picture of yourself you just text it to them, if they ask for a shirt you hand it to them
+
+// objects and arrays are too big to go straight in, so instead the variable just points to them
+// If your friend asks you for your favorite restaurant, you point to it (with an address maybe)
 
 
-// ["Hello Michele!", "Hello Timothy!", "Hello Ray!"]
-// bonus points if you use template literal
 
-const friendGreetings = myFriends.map(name => `Hello ${name}!`)
-//alert(friendGreetings.join("\n"))
+function filter(array, shouldKeep) {
+  // let array = ["apple", "berry", "banana"]; 
+  // let shouldKeep = (food) => food.includes("a")       let food = "banana"
+  const filteredArray = [] // [ "apple", "banana" ]
+  for (let i = 0; i < array.length; i++) {
+    const item = array[i] // "banana"
+    if (shouldKeep(item)) {
+      filteredArray.push(item)
+    }
+  }
+  return filteredArray
+}
 
-// Job Skill of this week:
-// map filter and find with arrays of objects (using arrow function for the callback functions)
+
+const fruits = ["apple", "😆", "banana"]
+const fullStrings = filter(fruits, food => food.includes("a"))
+
+
+
+
+
+
 
 const books = [
   {
-      id: 0,
-      title: "Jane Eyre",
-      genre: "Classic"
+    id: 0,
+    title: "Jane Eyre",
+    genre: "Classic"
   },
   {
-      id: 1,
-      title: "Ancillary Justice",
-      genre: "Science Fiction"
+    id: 1,
+    title: "Ancillary Justice",
+    genre: "Science Fiction"
   },
   {
-      id: 2,
-      title: "Atomic Habits",
-      genre: "Nonfiction"
+    id: 2,
+    title: "Atomic Habits",
+    genre: "Nonfiction"
   },
   {
-      id: 3,
-      title: "Dune",
-      genre: "Science Fiction"
+    id: 3,
+    title: "Dune",
+    genre: "Science Fiction"
   },
 ]
 
-// Map - map each book in this style: "Jane Eyre (Classic)"
+// ["Jane Eyre", "Ancillary Justice", "Atomic Habits", "Dune"]
+
+books[1].title // "Ancillary Justice"
+
 // Filter - filter for all Science Fiction books (Ancillary Justice, Dune)
-// Find - find the book with the id of 2 (Atomic Habits)
 
-// Map - most frequently used to map an array of objects to how those objects should be displayed
-alert(
-  books.map( book => `${book.title} (${book.genre})` ) // book.title + " (" + book.genre + ")"
-)
+const scienceFictionBooks = books.filter( book => book.genre === "Science Fiction" )
+console.log(scienceFictionBooks)
 
-// Filter - most frequently used to filter (search, filters, in weird situations delete)
-const scienceFiction = books.filter(book => book.genre === "Science Fiction")
-alert(
-  "Science Fiction Books:\n" +
-  scienceFiction.map( book => `${book.title} (${book.genre})` )
-)
 
-// Find - most frequently used to get something by its id
-const book2 = books.find(book => book.id === 2)
-console.log(book2)
+// Map - map each book in this style: "Jane Eyre (Classic)"
+// We frequently use map to map an array of objects to a nice way to display them
+
+alert(   books.map(  book => `${book.title} (${book.genre})`  )   )
