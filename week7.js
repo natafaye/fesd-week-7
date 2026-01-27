@@ -1,12 +1,10 @@
-// CONSOLE: '🎫'
-
 function getTicket(money) { // let money = 10
   if (money >= 10) {
-    return '🎫' //console.log('🎫')
+    return '🎫'
   }
 }
 
-function enterTheater(movieTicket) { // let movieTicket = undefined
+function enterTheater(movieTicket) { // let movieTicket = '🎫'
   if (movieTicket === '🎫') {
     alert('Enjoy your movie!')
   } else {
@@ -14,104 +12,199 @@ function enterTheater(movieTicket) { // let movieTicket = undefined
   }
 }
 
-// Function calls simplify to whatever that function returns
-// If the function has no return statement it simplifies to undefined
-const ticket = getTicket(10) // WAIT
+// Simplify right hand side down to a value
+// A function call simplifies to whatever that function returns
+let ticket = getTicket(10) // undefined
+// Anything we pass in will be simplified to a value
 enterTheater(ticket)
 
 
-// DATA TYPES
-
-// BASIC
-// bool, string, number
-// Actually in the variable
-
-// FANCY
-// object, array
-// too big to actually be "in" the variable
-// pointed to
+// ticket = '🎫'
 
 
 
-// const and let make a new variable
-// Scope: wherever that const or let is, the variable is trapped inside there
-// You can have two variables with the same name if they're in different scopes
-// When you use a variable name it looks for the "closest" line with a let or const and that variable name
-// STRONG GUIDELINE: Don't use the same name for a variable in overlapping scope
-// We do reuse variable names constantly and we should to make it easy to understand what's in it
-
-let myString = "Here is an equation + (5 + 3) + isn't it great"
-let mySecondString = "Here is an equation " + (5 + 3) + " isn't it great"
-let myThirdString = `Here is an equation ${5 + 3} isn't it great`
-
-console.log(myString)
-console.log(mySecondString)
-console.log(myThirdString)
-
-
-// The most confusing thing is that input is a variable (specifically a parameter)
-// Somewhere this happens: let input = WHATEVER THEY PASS IN
-// const myFunction = input => "output"
-// // c u l8r
-
-// function myFunction(input) {
-//   return "output"
-// }
-// see you later
-
-
-
-
-const teach = () => alert("smart things")
-
-// ALERT: "smart things"
-
-function getTeachFunction() {
-  // On a line with a return the first thing it will do is simplify the part after the return to a value
-  // To simplify a function call it calls the function and simplifies to whatever that function returns
-  return teach
+// Little machine
+function getFrozenYogurt(isCone) {
+  if (isCone) {
+    return '🍦'
+  } else {
+    return '🍨'
+  }
 }
 
-// teach is a toaster
-// teach() is toast
+function addToppings(yogurt) { // let yogurt = '🍨'
+  return yogurt + '🍬'
+}
 
-//  log out what getTeachFunction returns
-console.log(getTeachFunction()) // () => alert("smart things")
+// Go to the yogurt place with your significant other
 
+const myCup = getFrozenYogurt(false) // '🍨'
+const beauCup = getFrozenYogurt(true) // '🍦'
 
-//specialFunction(teach, isDeveloper)
+const myFinishedCup = addToppings(myCup)
+const beauFinishedCup = addToppings(beauCup) // '🍦🍬'
 
-
-
-
-
-// function filterOutEmpty(array) {
-//   const filteredArray = []
-//   for (let i = 0; i < array.length; i++) {
-//     const item = array[i]
-//     if (item < 100) {
-//       filteredArray.push(item)
-//     }
-//   }
-//   return filteredArray // ["apple", "banana"]
-// }
-
-// const fruits = ["apple", "", "banana", "", ""]
-// const fullStrings = filterOutEmpty(fruits)
+console.log("I'm eating " + myFinishedCup) // '🍨🍬'
+console.log("Boo eating " + beauFinishedCup) // '🍦🍬'
 
 
-// const prices = [10, 150, 40, 37]
-// const cheaperPrices = filterOutEmpty(prices)
+
+// let = variable can change whenever
+// const = set once never changed
+// "Constant" = a variable that ALWAYS has one specific value
+
+// let (keyword)
+let myAge = 40
+myAge++
+
+// const (keyword)
+const myFavoriteColor = prompt("What's your favorite color?") // "yellow"
+// won't ever change
+
+// Constant (concept not a keyword)
+// Often name in 'screaming snake case' (you don't have to know that)
+// Computer doesn't know or care about this
+const NUMBER_OF_ROWS = 3
 
 
-// In professional I almost never see a for loop only .map, .filter, .find, .foreach
 
 
-// THE BIG CONCEPTS
-// Array methods (map, filter, find) with arrays of objects
-//     Callbacks
-//     Functions calling other functions
-//     Navigating inside of arrays of objects
+// Simple Data Types
+// string, boolean, number
+// Put straight into the variable
+// If a friend texts you asking for a picture, you send them a copy of the picture
+
+const number = 20
+const duncansNumber = number // puts a copy of number in duncansNumber
+
+// Complex Data Types
+// array, object, function
+// Pointed to by the variable (too big to go inside a variable)
+// If a friends text you asking for your favorite restaurant, you might send them a pin to that restaurant (123 main st)
+
+const list = [1, 2, 3]
+list.push(4) // ALL GOOD
+
+const duncansList = list // points to the exact same array as list
+
+
+
+const raceFinishers = ["paulette", "duncan"]
+raceFinishers.push("natalie")
+raceFinishers[0] // "paulette"
+
+
+const email = {
+  id: 23, // identifier for us (could be named whatever but it's often 'id')
+  author: "Natalie",
+  subject: "How are you?",
+  text: "Hey, good to see you, how are you doing?",
+  dateSent: "1/26/26",
+  hasBeenRead: false
+}
+
+// email.dateSent
+
+
+
+
+
+let users = [
+  {
+    id: 0,
+    username: "abby324",
+    isAdmin: false
+  },
+  {
+    id: 1,
+    username: "mcp23",
+    isAdmin: true
+  },
+  {
+    id: 3,
+    username: "derek55",
+    isAdmin: false
+  }
+]
+
+
+console.log(users[2])
+
+
+// array: [2343, "hello", 3]
+// Access into array: myArray[0]
+// object: { id: 234233432, something: "hello", somethingElse: 3 }
+// Access into object: myObject.something
+
+
+
+let tasks = [
+  {
+    text: "Laundry",
+    tags: [
+      "home",
+      "annoying"
+    ]
+  },
+  {
+    text: "Emails",
+    tags: [
+      "work"
+    ]
+  },
+]
+
+tasks[1].tags[0] // "work"
+
+
+
+let listOfUsers = [
+  {
+    name: "Patrick",
+    address: {
+      city: "Atlanta",
+      state: "Georgia",
+      zipCode: 88343
+    }
+  }
+]
+
+listOfUsers[0].address.state // "Georgia"
+
+listOfUsers[0].name // "Patrick"
+
+
+
+// Most Important Concepts:
+// 1) Functions calling other functions (returning, passing parameters)
+// 2) Arrays of objects
+// 3) Reading arrow functions: something => something + 5
+
+
+// cannot
+// can't
+// can not
+
+function myFunction() {
+
+}
+
+const myFunction2 = () => {
+
+}
+
+
+const addOne = (number) => {
+  return number + 1
+}
+
+
+
+const prices = [43, 25, 16, 456, 12]
+
+const cheaperPrices = prices.filter(price => price <= 25)
+// [25, 16, 12]
+
 
 
 
@@ -138,20 +231,19 @@ const books = [
   },
 ]
 
-// Map - map each book in this style: "Jane Eyre (Classic)"
-// Filter - filter for all Science Fiction books (Ancillary Justice, Dune)
-// Find - find the book with the id of 2 (Atomic Habits)
+console.log(books)
 
+// Filter - filter for all Science Fiction books(Ancillary Justice, Dune)
+const sciFi = books.filter(  book => book.genre === "Science Fiction"  )
+console.log(sciFi)
+// a callback function that takes in one book object and returns true if it is a science fiction book
+// price => price <= 25
 
-// MAP - most common use of map is to map objects to how we want them displayed
-// Callback that takes in each book as input and returns the string in this format "Title (Genre)"
-alert("Here are the boooks " + books.map(  book => book.title + " (" + book.genre + ")"  )  )
-
-// FILTER - most common use of filter is to filter or search
-const scienceFictionBooks = books.filter( book => book.genre === "Science Fiction" )
-console.log(scienceFictionBooks)
-
-
-// FIND - most common use of find is to find one with a particular id
-const specificBook = books.find( book => book.id === 3 )
-console.log(specificBook)
+// Concepts Involved:
+// arrays of objects
+// arrays
+// objects
+// functions
+// parameters
+// arrow functions
+// callback functions
